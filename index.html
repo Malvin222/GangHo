@@ -6,98 +6,59 @@
     <title>축검산장 계산</title>
 </head>
 <script>
-  // 각 입력 필드 값이 변경될 때마다 호출되는 함수
+  // 자재 이름과 대응되는 ID 배열
+  const materials = ['RedCopper', 'BlackSteel', 'Quartz', 'Copper'];
+  const materialKor = { 'RedCopper': '적동', 'BlackSteel': '흑철', 'Quartz': '설은', 'Copper': '자금' };
+
+  // 값 계산 및 업데이트
   function updateValues() {
-    // 각 입력 필드의 값을 가져와 숫자로 변환 후 합산
-    var redCopperValue = parseInt(document.getElementById('storageRedCopper').value || 0) +
-                         parseInt(document.getElementById('forgingRedCopper').value || 0) +
-                         parseInt(document.getElementById('stoveRedCopper').value || 0);
+    materials.forEach(material => {
+      let total = 0;
 
-    var blackSteelValue = parseInt(document.getElementById('storageBlackSteel').value || 0) +
-                         parseInt(document.getElementById('forgingBlackSteel').value || 0) +
-                         parseInt(document.getElementById('stoveBlackSteel').value || 0);
+      // 각 구역의 값을 합산
+      ['storage', 'forging', 'stove'].forEach(section => {
+        const value = parseInt(document.getElementById(`${section}${material}`).value || 0);
+        total += value;
+      });
 
-    var quartzValue = parseInt(document.getElementById('storageQuartz').value || 0) +
-                      parseInt(document.getElementById('forgingQuartz').value || 0) +
-                      parseInt(document.getElementById('stoveQuartz').value || 0);
-
-    var copperValue = parseInt(document.getElementById('storageCopper').value || 0) +
-                      parseInt(document.getElementById('forgingCopper').value || 0) +
-                      parseInt(document.getElementById('stoveCopper').value || 0);
-
-    // 각 div에 값을 업데이트
-    document.getElementById('redCopper').innerText = '적동: ' + redCopperValue;
-    document.getElementById('blackSteel').innerText = '흑철: ' + blackSteelValue;
-    document.getElementById('quartz').innerText = '설은: ' + quartzValue;
-    document.getElementById('copper').innerText = '자금: ' + copperValue;
+      // 결과 업데이트
+      document.getElementById(material.toLowerCase()).innerText = `${materialKor[material]}: ${total}`;
+    });
   }
 
-  // 페이지가 로드된 후에 이벤트 리스너를 등록
-  document.addEventListener('DOMContentLoaded', function() {
-    // 각 입력 필드에 이벤트 리스너 추가
-    document.getElementById('storageRedCopper').addEventListener('input', updateValues);
-    document.getElementById('storageBlackSteel').addEventListener('input', updateValues);
-    document.getElementById('storageQuartz').addEventListener('input', updateValues);
-    document.getElementById('storageCopper').addEventListener('input', updateValues);
-    document.getElementById('forgingRedCopper').addEventListener('input', updateValues);
-    document.getElementById('forgingBlackSteel').addEventListener('input', updateValues);
-    document.getElementById('forgingQuartz').addEventListener('input', updateValues);
-    document.getElementById('forgingCopper').addEventListener('input', updateValues);
-    document.getElementById('stoveRedCopper').addEventListener('input', updateValues);
-    document.getElementById('stoveBlackSteel').addEventListener('input', updateValues);
-    document.getElementById('stoveQuartz').addEventListener('input', updateValues);
-    document.getElementById('stoveCopper').addEventListener('input', updateValues);
+  // 페이지 로드 후 이벤트 등록
+  document.addEventListener('DOMContentLoaded', function () {
+    materials.forEach(material => {
+      ['storage', 'forging', 'stove'].forEach(section => {
+        document.getElementById(`${section}${material}`).addEventListener('input', updateValues);
+      });
+    });
   });
 </script>
 <body>
     <h1>축검산장 계산</h1>
     <table>
       <tr><td>창고</td></tr>
-      <tr>
-        <td>적동</td><td><input type="number" id="storageRedCopper"></td>
-      </tr>
-      <tr>
-        <td>흑철</td><td><input type="number" id="storageBlackSteel"></td>
-      </tr>
-      <tr>
-        <td>설은</td><td><input type="number" id="storageQuartz"></td>
-      </tr>
-      <tr>
-        <td>자금</td><td><input type="number" id="storageCopper"></td>
-      </tr>
+      <tr><td>적동</td><td><input type="number" id="storageRedCopper"></td></tr>
+      <tr><td>흑철</td><td><input type="number" id="storageBlackSteel"></td></tr>
+      <tr><td>설은</td><td><input type="number" id="storageQuartz"></td></tr>
+      <tr><td>자금</td><td><input type="number" id="storageCopper"></td></tr>
       <tr><td>단조방</td></tr>
-      <tr>
-        <td>적동</td><td><input type="number" id="forgingRedCopper"></td>
-      </tr>
-      <tr>
-        <td>흑철</td><td><input type="number" id="forgingBlackSteel"></td>
-      </tr>
-      <tr>
-        <td>설은</td><td><input type="number" id="forgingQuartz"></td>
-      </tr>
-      <tr>
-        <td>자금</td><td><input type="number" id="forgingCopper"></td>
-      </tr>
+      <tr><td>적동</td><td><input type="number" id="forgingRedCopper"></td></tr>
+      <tr><td>흑철</td><td><input type="number" id="forgingBlackSteel"></td></tr>
+      <tr><td>설은</td><td><input type="number" id="forgingQuartz"></td></tr>
+      <tr><td>자금</td><td><input type="number" id="forgingCopper"></td></tr>
       <tr><td>화로방</td></tr>
-      <tr>
-        <td>적동</td><td><input type="number" id="stoveRedCopper"></td>
-      </tr>
-      <tr>
-        <td>흑철</td><td><input type="number" id="stoveBlackSteel"></td>
-      </tr>
-      <tr>
-        <td>설은</td><td><input type="number" id="stoveQuartz"></td>
-      </tr>
-      <tr>
-        <td>자금</td><td><input type="number" id="stoveCopper"></td>
-      </tr>
+      <tr><td>적동</td><td><input type="number" id="stoveRedCopper"></td></tr>
+      <tr><td>흑철</td><td><input type="number" id="stoveBlackSteel"></td></tr>
+      <tr><td>설은</td><td><input type="number" id="stoveQuartz"></td></tr>
+      <tr><td>자금</td><td><input type="number" id="stoveCopper"></td></tr>
     </table>
   
-  <!-- div 영역에 값이 출력됩니다 -->
-  <div id="redCopper">적동: 0</div>
-  <div id="blackSteel">흑철: 0</div>
-  <div id="quartz">설은: 0</div>
-  <div id="copper">자금: 0</div>
-
+    <!-- div 영역에 값이 출력됩니다 -->
+    <div id="redcopper">적동: 0</div>
+    <div id="blacksteel">흑철: 0</div>
+    <div id="quartz">설은: 0</div>
+    <div id="copper">자금: 0</div>
 </body>
 </html>
