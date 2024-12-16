@@ -6,26 +6,26 @@
     <title>축검산장 계산</title>
 </head>
 <script>
-  // 페이지가 로드된 후 실행되는 함수
+  // 각 입력 필드 값이 변경될 때마다 호출되는 함수
   function updateValues() {
     // 각 입력 필드의 값을 가져옴
     var redCopperValue = document.getElementById('storageRedCopper').value;
     var quartzValue = document.getElementById('storageQuartz').value;
     var copperValue = document.getElementById('storageCopper').value;
 
-    // 각 div에 값을 출력
+    // 각 div에 값을 업데이트
     document.getElementById('redCopper').innerText = '적동: ' + (redCopperValue ? redCopperValue : 0);
     document.getElementById('quartz').innerText = '설은: ' + (quartzValue ? quartzValue : 0);
     document.getElementById('copper').innerText = '자금: ' + (copperValue ? copperValue : 0);
   }
 
-  // 페이지 로드 후 이벤트 리스너 추가
-  window.onload = function() {
-    // 모든 입력 필드에 이벤트 리스너 추가
+  // 페이지가 로드된 후에 이벤트 리스너를 등록
+  document.addEventListener('DOMContentLoaded', function() {
+    // 각 입력 필드에 이벤트 리스너 추가
     document.getElementById('storageRedCopper').addEventListener('input', updateValues);
     document.getElementById('storageQuartz').addEventListener('input', updateValues);
     document.getElementById('storageCopper').addEventListener('input', updateValues);
-  };
+  });
 </script>
 <body>
     <h1>축검산장 계산</h1>
@@ -41,8 +41,11 @@
         <td>자금</td><td><input type="number" id="storageCopper"></td>
       </tr>
     </table>
+  
+  <!-- div 영역에 값이 출력됩니다 -->
   <div id="redCopper">적동: 0</div>
   <div id="quartz">설은: 0</div>
   <div id="copper">자금: 0</div>
+
 </body>
 </html>
