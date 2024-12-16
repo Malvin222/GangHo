@@ -6,20 +6,25 @@
     <title>축검산장 계산</title>
 </head>
 <script>
+  // 페이지가 로드된 후 실행되는 함수
   function updateValues() {
-    var redCopperValue = document.getElemetById('storageRedCopper').value;
+    // 각 입력 필드의 값을 가져옴
+    var redCopperValue = document.getElementById('storageRedCopper').value;
     var quartzValue = document.getElementById('storageQuartz').value;
-    var copperValue = documetn.getElementById('storageCopper').value;
+    var copperValue = document.getElementById('storageCopper').value;
 
-  document.getElemetById('storageRedCopper').innerText = '적동' + (redCopperValue ? redCopperValue :0 );
-  document.getElemetById('storageQuartz').innerText = '설은' + (storageQuartz ? storageQuartz :0 );
-  document.getElemetById('storageCopper').innerText = '자금' + (storageCopper ? storageCopper :0 );
+    // 각 div에 값을 출력
+    document.getElementById('redCopper').innerText = '적동: ' + (redCopperValue ? redCopperValue : 0);
+    document.getElementById('quartz').innerText = '설은: ' + (quartzValue ? quartzValue : 0);
+    document.getElementById('copper').innerText = '자금: ' + (copperValue ? copperValue : 0);
   }
 
-  window.onload = function(){
-    document.getElementById('storageRedCopper').addEventListener('input',updateValues)
-    document.getElementById('storageQuartz').addEventListener('input',updateValues)
-    document.getElementById('storageCopper').addEventListener('input',updateValues)
+  // 페이지 로드 후 이벤트 리스너 추가
+  window.onload = function() {
+    // 모든 입력 필드에 이벤트 리스너 추가
+    document.getElementById('storageRedCopper').addEventListener('input', updateValues);
+    document.getElementById('storageQuartz').addEventListener('input', updateValues);
+    document.getElementById('storageCopper').addEventListener('input', updateValues);
   };
 </script>
 <body>
@@ -36,8 +41,8 @@
         <td>자금</td><td><input type="number" id="storageCopper"></td>
       </tr>
     </table>
-  <div id="redCopper">적동: 0 </div>
-  <div id="quartz">설은: 0 </div>
-  <div id="copper">자금: 0 </div>
+  <div id="redCopper">적동: 0</div>
+  <div id="quartz">설은: 0</div>
+  <div id="copper">자금: 0</div>
 </body>
 </html>
