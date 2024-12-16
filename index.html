@@ -8,15 +8,23 @@
 <script>
   // 각 입력 필드 값이 변경될 때마다 호출되는 함수
   function updateValues() {
-    // 각 입력 필드의 값을 가져옴
-    var redCopperValue = document.getElementById('storageRedCopper').value + document.getElementById('forgingRedCopper').value + document.getElementById('stoveRedCopper').value ;
-    var quartzValue = document.getElementById('storageQuartz').value + document.getElementById('forgingQuartz').value + document.getElementById('stoveQuartz').value;
-    var copperValue = document.getElementById('storageCopper').value + document.getElementById('forgingCopper').value + document.getElementById('stoveCopper').value;
+    // 각 입력 필드의 값을 가져와 숫자로 변환 후 합산
+    var redCopperValue = parseInt(document.getElementById('storageRedCopper').value || 0) +
+                         parseInt(document.getElementById('forgingRedCopper').value || 0) +
+                         parseInt(document.getElementById('stoveRedCopper').value || 0);
+
+    var quartzValue = parseInt(document.getElementById('storageQuartz').value || 0) +
+                      parseInt(document.getElementById('forgingQuartz').value || 0) +
+                      parseInt(document.getElementById('stoveQuartz').value || 0);
+
+    var copperValue = parseInt(document.getElementById('storageCopper').value || 0) +
+                      parseInt(document.getElementById('forgingCopper').value || 0) +
+                      parseInt(document.getElementById('stoveCopper').value || 0);
 
     // 각 div에 값을 업데이트
-    document.getElementById('redCopper').innerText = '적동: ' + (redCopperValue ? redCopperValue : 0);
-    document.getElementById('quartz').innerText = '설은: ' + (quartzValue ? quartzValue : 0);
-    document.getElementById('copper').innerText = '자금: ' + (copperValue ? copperValue : 0);
+    document.getElementById('redCopper').innerText = '적동: ' + redCopperValue;
+    document.getElementById('quartz').innerText = '설은: ' + quartzValue;
+    document.getElementById('copper').innerText = '자금: ' + copperValue;
   }
 
   // 페이지가 로드된 후에 이벤트 리스너를 등록
@@ -25,6 +33,12 @@
     document.getElementById('storageRedCopper').addEventListener('input', updateValues);
     document.getElementById('storageQuartz').addEventListener('input', updateValues);
     document.getElementById('storageCopper').addEventListener('input', updateValues);
+    document.getElementById('forgingRedCopper').addEventListener('input', updateValues);
+    document.getElementById('forgingQuartz').addEventListener('input', updateValues);
+    document.getElementById('forgingCopper').addEventListener('input', updateValues);
+    document.getElementById('stoveRedCopper').addEventListener('input', updateValues);
+    document.getElementById('stoveQuartz').addEventListener('input', updateValues);
+    document.getElementById('stoveCopper').addEventListener('input', updateValues);
   });
 </script>
 <body>
