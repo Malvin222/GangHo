@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>축검산장 계산</title>
+</head>
+<script>
+  function updateValues() {
+    var redCopperValue = document.getElemetById('storageRedCopper').value;
+    var quartzValue = document.getElementById('storageQuartz').value;
+    var copperValue = documetn.getElementById('storageCopper').value;
+
+  document.getElemetById('storageRedCopper').innerText = '적동' + (redCopperValue ? redCopperValue :0 );
+  document.getElemetById('storageQuartz').innerText = '설은' + (storageQuartz ? storageQuartz :0 );
+  document.getElemetById('storageCopper').innerText = '자금' + (storageCopper ? storageCopper :0 );
+  }
+
+  window.onload = function(){
+    document.getElementById('storageRedCopper').addEventListener('input',updateValues)
+    document.getElementById('storageQuartz').addEventListener('input',updateValues)
+    document.getElementById('storageCopper').addEventListener('input',updateValues)
+  };
+</script>
+<body>
+    <h1>축검산장 계산</h1>
+    <table>
+      <tr><td>창고</td></tr>
+      <tr>
+        <td>적동</td><td><input type="number" id="storageRedCopper"></td>
+      </tr>
+      <tr>
+        <td>설은</td><td><input type="number" id="storageQuartz"></td>
+      </tr>
+      <tr>
+        <td>자금</td><td><input type="number" id="storageCopper"></td>
+      </tr>
+    </table>
+  <div id="redCopper">적동: 0 </div>
+  <div id="quartz">설은: 0 </div>
+  <div id="copper">자금: 0 </div>
+</body>
+</html>
