@@ -13,6 +13,10 @@
                          parseInt(document.getElementById('forgingRedCopper').value || 0) +
                          parseInt(document.getElementById('stoveRedCopper').value || 0);
 
+    var blackSteelValue = parseInt(document.getElementById('storageBlackSteel').value || 0) +
+                         parseInt(document.getElementById('forgingBlackSteel').value || 0) +
+                         parseInt(document.getElementById('stoveBlackSteel').value || 0);
+
     var quartzValue = parseInt(document.getElementById('storageQuartz').value || 0) +
                       parseInt(document.getElementById('forgingQuartz').value || 0) +
                       parseInt(document.getElementById('stoveQuartz').value || 0);
@@ -23,6 +27,7 @@
 
     // 각 div에 값을 업데이트
     document.getElementById('redCopper').innerText = '적동: ' + redCopperValue;
+    document.getElementById('blackSteel').innerText = '적동: ' + blackSteelValue;
     document.getElementById('quartz').innerText = '설은: ' + quartzValue;
     document.getElementById('copper').innerText = '자금: ' + copperValue;
   }
@@ -31,12 +36,15 @@
   document.addEventListener('DOMContentLoaded', function() {
     // 각 입력 필드에 이벤트 리스너 추가
     document.getElementById('storageRedCopper').addEventListener('input', updateValues);
+    document.getElementById('storageBlackSteel').addEventListener('input', updateValues);
     document.getElementById('storageQuartz').addEventListener('input', updateValues);
     document.getElementById('storageCopper').addEventListener('input', updateValues);
     document.getElementById('forgingRedCopper').addEventListener('input', updateValues);
+    document.getElementById('forgingBlackSteel').addEventListener('input', updateValues);
     document.getElementById('forgingQuartz').addEventListener('input', updateValues);
     document.getElementById('forgingCopper').addEventListener('input', updateValues);
     document.getElementById('stoveRedCopper').addEventListener('input', updateValues);
+    document.getElementById('stoveBlackSteel').addEventListener('input', updateValues);
     document.getElementById('stoveQuartz').addEventListener('input', updateValues);
     document.getElementById('stoveCopper').addEventListener('input', updateValues);
   });
@@ -49,6 +57,9 @@
         <td>적동</td><td><input type="number" id="storageRedCopper"></td>
       </tr>
       <tr>
+        <td>흑철</td><td><input type="number" id="storageBlackSteel"></td>
+      </tr>
+      <tr>
         <td>설은</td><td><input type="number" id="storageQuartz"></td>
       </tr>
       <tr>
@@ -57,6 +68,9 @@
       <tr><td>단조방</td></tr>
       <tr>
         <td>적동</td><td><input type="number" id="forgingRedCopper"></td>
+      </tr>
+      <tr>
+        <td>흑철</td><td><input type="number" id="forgingBlackSteel"></td>
       </tr>
       <tr>
         <td>설은</td><td><input type="number" id="forgingQuartz"></td>
@@ -69,6 +83,9 @@
         <td>적동</td><td><input type="number" id="stoveRedCopper"></td>
       </tr>
       <tr>
+        <td>흑철</td><td><input type="number" id="stoveBlackSteel"></td>
+      </tr>
+      <tr>
         <td>설은</td><td><input type="number" id="stoveQuartz"></td>
       </tr>
       <tr>
@@ -78,6 +95,7 @@
   
   <!-- div 영역에 값이 출력됩니다 -->
   <div id="redCopper">적동: 0</div>
+  <div id="blackSteel">흑철: 0</div>
   <div id="quartz">설은: 0</div>
   <div id="copper">자금: 0</div>
 
